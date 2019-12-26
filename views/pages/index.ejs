@@ -1,0 +1,54 @@
+
+<%- include('./header') %>
+<% if(locals.flash && locals.flash.success) { %>
+  <div class="alert alert-success">
+    <strong>Success!</strong> <%= flash.success %>
+  </div>
+  <% } %>
+
+<form action="/" method="post"  class="needs-validation" novalidate>
+
+    <div class="form-group">
+        <label for="nom">Nom de l'Objet:</label>
+        <input type="text" class="form-control" id="nom" placeholder="Entrer un Nom d'objet" name="nom" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Veuillez entrer le nom de l'objet.</div>
+    </div>
+    <div class="form-group">
+        <label for="type">Type de  l'Objet:</label>
+        <input type="text" class="form-control" id="type" placeholder="Entrer un type" name="type" required>
+        <div class="valid-feedback">Valide.</div>
+        <div class="invalid-feedback">Veuillez entrer le type de l'objet .</div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" class="form-control" placeholder="veuillez saisir une petite description de l'obejt"></textarea>
+    </div>
+    <button type="submit" class="">
+        <i class=""></i>Envoyer
+    </button>
+</form>
+
+<script>
+    // Disable form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Get the forms we want to add validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+    
+<%- include('./footer') %>

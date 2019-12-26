@@ -1,0 +1,28 @@
+
+<%- include('./header') %>
+<% if(locals.flash && locals.flash.error) { %>
+    <div class="alert alert-success">
+      <strong>Success!</strong> <%= flash.error %>
+    </div>
+    <% } %>
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <% objets.forEach(function(item) { %>
+        <tbody>
+            <tr>
+                <td><%= item.nom %></td>
+                <td><%= item.type %></td>
+                <td><%= item.description %></td>
+                <td><a href="/remove/<%= item.id %>" class="btn btn-danger" >Supprimer</a><a href="/update/<%= item.id %>" class="btn btn-warning">Modifier</a></td>
+            </tr>
+        </tbody>
+    <% }); %>
+</table>
+<%- include('./footer') %>
