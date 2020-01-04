@@ -1,7 +1,4 @@
-#installation projet : npm ci ou npm install
 
-
-#pour importer la base de donnée : https://docs.mongodb.com/manual/reference/program/mongoimport/
 ## Running Locally
 
 Make sure you have [Node.js](http://nodejs.org/) and the [Mongo DB](https://docs.mongodb.com) installed.
