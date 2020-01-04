@@ -1,4 +1,4 @@
-#installation projet : npm ci ou npm install
+#installation projet (node_modules) : npm ci ou npm install
 
 
-#pour importer la base de donnée : https://docs.mongodb.com/manual/reference/program/mongoimport/
+#pour importer la base de donnée(documentation) : https://docs.mongodb.com/manual/reference/program/mongoimport/
