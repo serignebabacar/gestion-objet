@@ -38,5 +38,14 @@ class ObjetLoove {
             }
         })
     }
+    static find(id, cb) {
+        Objet.findOne({_id: id}, (err, objet) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+            cb(objet)
+        })
+    }
 }
 module.exports = ObjetLoove

@@ -37,15 +37,36 @@ app.get('/remove/:id', (req, res) => {
     req.flash('error', ' suppression reussie ')
     res.redirect('/pages/donnees')
 })
+app.get('/update/:id', (req, res) => {
+    content.find(req.params.id, (objet) => {
+        res.render('pages/update', {item : objet})
+    })
+})
 app.post('/', (req, res) => {
     let nom = req.body.nom
     let type = req.body.type
     let description = req.body.description
-    content.create(nom, type, description, () => {
-    })
-    req.flash('success', " l'objet a été ajouté  ")
-    res.redirect('/')
+    if (req.body.id_update === undefined) {
+        content.create(nom, type, description, () => {
+        })
+        req.flash('success', " l'objet a été ajouté  ")
+        res.redirect('/')
+    } else {
+        content.find(req.body.id_update, (objet) => {
+            objet.nom = nom
+            objet.type = type
+            objet.description = description
+            objet.save((err) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+            })
+            req.flash('success', " l'objet a été modifie  ")
+            res.redirect('/')
+        })
+    }
 })
-app.listen(5000, () => {
+app.listen(8000, () => {
     console.log('Server started on  [localhost:5000](http://localhost:5000/).')
 })
